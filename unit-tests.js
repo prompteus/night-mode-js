@@ -39,3 +39,20 @@ describe("DayTime isAfter function", function() {
     });
 
 });
+
+describe("isNumberInOpenInterval", function() {
+
+    it("should return true if the given argument is inside the interval", function() {
+        expect(isNumberInOpenInterval(10, 0, 20)).toBe(true);
+    });
+
+    it("should return true if the given argument is the same as one of the interval endpoints", function() {
+        expect(isNumberInOpenInterval(0, 0, 20)).toBe(true);
+        expect(isNumberInOpenInterval(20, 0, 20)).toBe(true);
+    });
+
+    it("should return false if the given argument is outside the interval", function() {
+        expect(isNumberInOpenInterval(-10, 0, 20)).toBe(false);
+    });
+
+});
