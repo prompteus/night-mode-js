@@ -23,3 +23,19 @@ describe("DayTime factory static function fromString", function() {
     });
 
 });
+
+describe("DayTime isAfter function", function() {
+
+    it("should return true if the given argument is after", function() {
+        expect(DayTime.fromString("20:30").isAfter(DayTime.fromString("20:00"))).toBe(true);
+    });
+
+    it("should return false if the given argument is before", function() {
+        expect(DayTime.fromString("15:00").isAfter(DayTime.fromString("20:00"))).toBe(false);
+    });
+
+    it("should return false if the given argument is the same time", function() {
+        expect(DayTime.fromString("20:30").isAfter(DayTime.fromString("20:30"))).toBe(false);
+    });
+
+});
