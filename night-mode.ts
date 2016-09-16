@@ -30,5 +30,10 @@ class DayTime {
             throw new Error("Given value " + time + " didn't match expected format HH:mm");
         }
     }
+    
+    isAfter(dayTime: DayTime): boolean {
+        return (this.hour > dayTime.hour
+        || (this.hour === dayTime.hour && this.minute > dayTime.minute));
+    }
 
 }

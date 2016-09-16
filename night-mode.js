@@ -25,6 +25,10 @@ var DayTime = (function () {
             throw new Error("Given value " + time + " didn't match expected format HH:mm");
         }
     };
+    DayTime.prototype.isAfter = function (dayTime) {
+        return (this.hour > dayTime.hour
+            || (this.hour === dayTime.hour && this.minute > dayTime.minute));
+    };
     return DayTime;
 }());
 //# sourceMappingURL=night-mode.js.map
