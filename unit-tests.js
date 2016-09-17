@@ -56,3 +56,40 @@ describe("isNumberInOpenInterval", function() {
     });
 
 });
+
+describe("NightMode isNight function", function(){
+
+    it ("should return true if current time is after the evening", function() {
+        DayTime.fromCurrentTime = function() {
+            return new DayTime.fromString("23:30");
+        }
+        var nightMode = new NightMode({
+            evening: "22:00",
+            morning: "06:30"
+        });
+        expect(nightMode.isNight()).toBe(true);
+    });
+
+    it ("should return false if current time is before the morning", function() {
+        DayTime.fromCurrentTime = function() {
+            return new DayTime.fromString("06:20");
+        }
+        var nightMode = new NightMode({
+            evening: "21:00",
+            morning: "06:30"
+        });
+        expect(nightMode.isNight()).toBe(true);
+    });
+
+    it ("should return false if current time is between the morning and the evening", function() {
+        DayTime.fromCurrentTime = function() {
+            return new DayTime.fromString("15:20");
+        }
+        var nightMode = new NightMode({
+            evening: "21:00",
+            morning: "06:30"
+        });
+        expect(nightMode.isNight()).toBe(false);
+    });
+
+});
