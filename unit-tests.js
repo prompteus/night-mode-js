@@ -59,39 +59,34 @@ describe("isNumberInOpenInterval", function() {
 
 describe("NightMode isNight function", function() {
 
-    it ("should return true if current time is after the evening", function() {
-        DayTime.fromCurrentTime = function() {
-            return new DayTime.fromString("23:30");
-        };
-        var nightMode = new NightMode({
+    var nightMode;
+
+    beforeEach(function() {
+        nightMode = new NightMode({
             evening: new DayTime(22, 0),
             morning: new DayTime(6, 30),
-            shouldAutoswitch: false
+            autoSwitch: false
         });
+    });
+
+    it("should return true if current time is after the evening", function() {
+        DayTime.fromCurrentTime = function() {
+            return new DayTime(23,30);
+        };
         expect(nightMode.isNight()).toBe(true);
     });
 
-    it ("should return false if current time is before the morning", function() {
+    it("should return false if current time is before the morning", function() {
         DayTime.fromCurrentTime = function() {
-            return new DayTime.fromString("06:20");
+            return new DayTime(6,20);
         };
-        var nightMode = new NightMode({
-            evening: new DayTime(21, 0),
-            morning: new DayTime(6, 30),
-            shouldAutoswitch: false
-        });
         expect(nightMode.isNight()).toBe(true);
     });
 
-    it ("should return false if current time is between the morning and the evening", function() {
+    it("should return false if current time is between the morning and the evening", function() {
         DayTime.fromCurrentTime = function() {
-            return new DayTime.fromString("15:20");
+            return new DayTime(15,20);
         };
-        var nightMode = new NightMode({
-            evening: new DayTime(21, 0),
-            morning: new DayTime(6, 30),
-            shouldAutoswitch: false
-        });
         expect(nightMode.isNight()).toBe(false);
     });
 

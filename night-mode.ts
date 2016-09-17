@@ -55,7 +55,7 @@ class NightMode {
         this.morning = options.morning instanceof DayTime ? options.morning : new DayTime(6, 0);
         this.refreshIntervalInSeconds = (typeof options.refreshIntervalInSeconds === 'number') ? options.refreshIntervalInSeconds : 20;
         this.nightClass = (typeof options.nightClass === 'string') ? options.nightClass : 'night';
-        if (options.shouldAutoswitch !== false) {
+        if (options.autoSwitch !== false) {
             this.enableAutoSwitch();
         }
     }
