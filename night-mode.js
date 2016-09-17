@@ -63,6 +63,9 @@ var NightMode = (function () {
         this.checkBodyClass();
         this.autoSwitchTimeoutIntervalID = setInterval(function () { return _this.checkBodyClass(); }, this.refreshIntervalInSeconds * 1000);
     };
+    NightMode.prototype.disableAutoSwitch = function () {
+        clearInterval(this.autoSwitchTimeoutIntervalID);
+    };
     return NightMode;
 }());
 //# sourceMappingURL=night-mode.js.map

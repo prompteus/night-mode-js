@@ -81,4 +81,8 @@ class NightMode {
         );
     }
 
+    disableAutoSwitch(): void {
+        clearInterval(this.autoSwitchTimeoutIntervalID);
+    }
+
 }
