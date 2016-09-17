@@ -65,7 +65,7 @@ class NightMode {
         return this.morning.isAfter(now) || !this.evening.isAfter(now);
     }
 
-    checkBodyClass(): void {
+    syncBodyClassWithCurrentTime(): void {
         if (this.isNight()) {
             document.body.classList.add(this.cssNightClassName);
         } else {
@@ -74,9 +74,9 @@ class NightMode {
     }
 
     enableAutoSwitch(): void {
-        this.checkBodyClass();
+        this.syncBodyClassWithCurrentTime();
         this.autoSwitchTimeoutIntervalID = setInterval(
-            () => this.checkBodyClass(),
+            () => this.syncBodyClassWithCurrentTime(),
             this.refreshIntervalInSeconds * 1000
         );
     }

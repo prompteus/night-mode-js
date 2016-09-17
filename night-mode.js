@@ -50,7 +50,7 @@ var NightMode = (function () {
         var now = DayTime.fromCurrentTime();
         return this.morning.isAfter(now) || !this.evening.isAfter(now);
     };
-    NightMode.prototype.checkBodyClass = function () {
+    NightMode.prototype.syncBodyClassWithCurrentTime = function () {
         if (this.isNight()) {
             document.body.classList.add(this.cssNightClassName);
         }
@@ -60,8 +60,8 @@ var NightMode = (function () {
     };
     NightMode.prototype.enableAutoSwitch = function () {
         var _this = this;
-        this.checkBodyClass();
-        this.autoSwitchTimeoutIntervalID = setInterval(function () { return _this.checkBodyClass(); }, this.refreshIntervalInSeconds * 1000);
+        this.syncBodyClassWithCurrentTime();
+        this.autoSwitchTimeoutIntervalID = setInterval(function () { return _this.syncBodyClassWithCurrentTime(); }, this.refreshIntervalInSeconds * 1000);
     };
     NightMode.prototype.disableAutoSwitch = function () {
         clearInterval(this.autoSwitchTimeoutIntervalID);
