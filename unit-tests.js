@@ -57,14 +57,14 @@ describe("isNumberInOpenInterval", function() {
 
 });
 
-describe("NightMode isNight function", function(){
+describe("NightMode isNight function", function() {
 
     it ("should return true if current time is after the evening", function() {
         DayTime.fromCurrentTime = function() {
             return new DayTime.fromString("23:30");
-        }
+        };
         var nightMode = new NightMode({
-            evening: new DayTime(22, 00),
+            evening: new DayTime(22, 0),
             morning: new DayTime(6, 30),
             shouldAutoswitch: false
         });
@@ -74,9 +74,9 @@ describe("NightMode isNight function", function(){
     it ("should return false if current time is before the morning", function() {
         DayTime.fromCurrentTime = function() {
             return new DayTime.fromString("06:20");
-        }
+        };
         var nightMode = new NightMode({
-            evening: new DayTime(21, 00),
+            evening: new DayTime(21, 0),
             morning: new DayTime(6, 30),
             shouldAutoswitch: false
         });
@@ -86,9 +86,9 @@ describe("NightMode isNight function", function(){
     it ("should return false if current time is between the morning and the evening", function() {
         DayTime.fromCurrentTime = function() {
             return new DayTime.fromString("15:20");
-        }
+        };
         var nightMode = new NightMode({
-            evening: new DayTime(21, 00),
+            evening: new DayTime(21, 0),
             morning: new DayTime(6, 30),
             shouldAutoswitch: false
         });
