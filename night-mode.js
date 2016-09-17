@@ -37,13 +37,13 @@ var DayTime = (function () {
 }());
 var NightMode = (function () {
     function NightMode(options) {
-        this.evening = (typeof options.evening !== 'undefined') ? DayTime.fromString(options.evening) : new DayTime(21, 0);
-        this.morning = (typeof options.morning !== 'undefined') ? DayTime.fromString(options.morning) : new DayTime(6, 0);
-        this.refreshIntervalInSeconds = (typeof options.refreshIntervalInSeconds !== 'undefined') ? options.refreshIntervalInSeconds : 20;
-        this.nightClass = (typeof options.nightClass !== 'undefined') ? options.nightClass : 'night';
-        this.shouldAutoswitch = (typeof options.shouldAutoswitch !== 'undefined') ? true : options.shouldAutoswitch;
-        if (this.shouldAutoswitch) {
-            this.initAutoSwitch();
+        if (options === void 0) { options = {}; }
+        this.evening = options.evening instanceof DayTime ? options.evening : new DayTime(21, 0);
+        this.morning = options.morning instanceof DayTime ? options.morning : new DayTime(6, 0);
+        this.refreshIntervalInSeconds = (typeof options.refreshIntervalInSeconds === 'number') ? options.refreshIntervalInSeconds : 20;
+        this.nightClass = (typeof options.nightClass === 'string') ? options.nightClass : 'night';
+        if (options.shouldAutoswitch !== false) {
+            this.enableAutoSwitch();
         }
     }
     NightMode.prototype.isNight = function () {
@@ -58,10 +58,10 @@ var NightMode = (function () {
             document.body.classList.remove(this.nightClass);
         }
     };
-    NightMode.prototype.initAutoSwitch = function () {
+    NightMode.prototype.enableAutoSwitch = function () {
         var _this = this;
         this.checkBodyClass();
-        var nightModeAutoSwitch = setInterval(function () { return _this.checkBodyClass(); }, this.refreshIntervalInSeconds * 1000);
+        this.autoSwitchTimeoutIntervalID = setInterval(function () { return _this.checkBodyClass(); }, this.refreshIntervalInSeconds * 1000);
     };
     return NightMode;
 }());

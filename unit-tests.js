@@ -64,8 +64,9 @@ describe("NightMode isNight function", function(){
             return new DayTime.fromString("23:30");
         }
         var nightMode = new NightMode({
-            evening: "22:00",
-            morning: "06:30"
+            evening: new DayTime(22, 00),
+            morning: new DayTime(6, 30),
+            shouldAutoswitch: false
         });
         expect(nightMode.isNight()).toBe(true);
     });
@@ -75,8 +76,9 @@ describe("NightMode isNight function", function(){
             return new DayTime.fromString("06:20");
         }
         var nightMode = new NightMode({
-            evening: "21:00",
-            morning: "06:30"
+            evening: new DayTime(21, 00),
+            morning: new DayTime(6, 30),
+            shouldAutoswitch: false
         });
         expect(nightMode.isNight()).toBe(true);
     });
@@ -86,8 +88,9 @@ describe("NightMode isNight function", function(){
             return new DayTime.fromString("15:20");
         }
         var nightMode = new NightMode({
-            evening: "21:00",
-            morning: "06:30"
+            evening: new DayTime(21, 00),
+            morning: new DayTime(6, 30),
+            shouldAutoswitch: false
         });
         expect(nightMode.isNight()).toBe(false);
     });

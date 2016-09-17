@@ -44,22 +44,19 @@ class DayTime {
 }
 
 class NightMode {
-
     evening: DayTime;
     morning: DayTime;
     refreshIntervalInSeconds: number;
     nightClass: string;
-    shouldAutoswitch: boolean;
-    isOn: boolean;
+    autoSwitchTimeoutIntervalID: number;
 
-    constructor(options) {
-        this.evening = (typeof options.evening !== 'undefined') ? DayTime.fromString(options.evening) : new DayTime(21, 0);
-        this.morning = (typeof options.morning !== 'undefined') ? DayTime.fromString(options.morning) : new DayTime(6, 0);
-        this.refreshIntervalInSeconds = (typeof options.refreshIntervalInSeconds !== 'undefined') ? options.refreshIntervalInSeconds : 20;
-        this.nightClass = (typeof options.nightClass !== 'undefined') ? options.nightClass : 'night';
-        this.shouldAutoswitch = (typeof options.shouldAutoswitch !== 'undefined') ? true : options.shouldAutoswitch;
-        if (this.shouldAutoswitch) {
-            this.initAutoSwitch();
+    constructor(options: any = {}) {
+        this.evening = options.evening instanceof DayTime ? options.evening : new DayTime(21, 0);
+        this.morning = options.morning instanceof DayTime ? options.morning : new DayTime(6, 0);
+        this.refreshIntervalInSeconds = (typeof options.refreshIntervalInSeconds === 'number') ? options.refreshIntervalInSeconds : 20;
+        this.nightClass = (typeof options.nightClass === 'string') ? options.nightClass : 'night';
+        if (options.shouldAutoswitch !== false) {
+            this.enableAutoSwitch();
         }
     }
 
@@ -76,9 +73,9 @@ class NightMode {
         }
     }
 
-    initAutoSwitch(): void {
+    enableAutoSwitch(): void {
         this.checkBodyClass();
-        let nightModeAutoSwitch = setInterval(
+        this.autoSwitchTimeoutIntervalID = setInterval(
             () => this.checkBodyClass(),
             this.refreshIntervalInSeconds * 1000
         );
