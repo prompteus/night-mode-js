@@ -42,10 +42,26 @@ var NightMode = (function () {
         this.refreshIntervalInSeconds = (typeof options.refreshIntervalInSeconds !== 'undefined') ? options.refreshIntervalInSeconds : 20;
         this.nightClass = (typeof options.nightClass !== 'undefined') ? options.nightClass : 'night';
         this.shouldAutoswitch = (typeof options.shouldAutoswitch !== 'undefined') ? true : options.shouldAutoswitch;
+        if (this.shouldAutoswitch) {
+            this.initAutoSwitch();
+        }
     }
     NightMode.prototype.isNight = function () {
         var now = DayTime.fromCurrentTime();
         return this.morning.isAfter(now) || !this.evening.isAfter(now);
+    };
+    NightMode.prototype.checkBodyClass = function () {
+        if (this.isNight()) {
+            document.body.classList.add(this.nightClass);
+        }
+        else {
+            document.body.classList.remove(this.nightClass);
+        }
+    };
+    NightMode.prototype.initAutoSwitch = function () {
+        var _this = this;
+        this.checkBodyClass();
+        var nightModeAutoSwitch = setInterval(function () { return _this.checkBodyClass(); }, this.refreshIntervalInSeconds * 1000);
     };
     return NightMode;
 }());

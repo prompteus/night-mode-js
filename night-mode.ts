@@ -58,11 +58,30 @@ class NightMode {
         this.refreshIntervalInSeconds = (typeof options.refreshIntervalInSeconds !== 'undefined') ? options.refreshIntervalInSeconds : 20;
         this.nightClass = (typeof options.nightClass !== 'undefined') ? options.nightClass : 'night';
         this.shouldAutoswitch = (typeof options.shouldAutoswitch !== 'undefined') ? true : options.shouldAutoswitch;
+        if (this.shouldAutoswitch) {
+            this.initAutoSwitch();
+        }
     }
 
     isNight(): boolean {
         let now = DayTime.fromCurrentTime();
         return this.morning.isAfter(now) || !this.evening.isAfter(now);
     }
-    
+
+    checkBodyClass(): void {
+        if (this.isNight()) {
+            document.body.classList.add(this.nightClass);
+        } else {
+            document.body.classList.remove(this.nightClass);
+        }
+    }
+
+    initAutoSwitch(): void {
+        this.checkBodyClass();
+        let nightModeAutoSwitch = setInterval(
+            () => this.checkBodyClass(),
+            this.refreshIntervalInSeconds * 1000
+        );
+    }
+
 }
