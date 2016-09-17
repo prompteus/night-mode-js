@@ -43,6 +43,10 @@ var NightMode = (function () {
         this.nightClass = (typeof options.nightClass !== 'undefined') ? options.nightClass : 'night';
         this.shouldAutoswitch = (typeof options.shouldAutoswitch !== 'undefined') ? true : options.shouldAutoswitch;
     }
+    NightMode.prototype.isNight = function () {
+        var now = DayTime.fromCurrentTime();
+        return this.morning.isAfter(now) || !this.evening.isAfter(now);
+    };
     return NightMode;
 }());
 //# sourceMappingURL=night-mode.js.map

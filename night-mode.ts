@@ -60,4 +60,9 @@ class NightMode {
         this.shouldAutoswitch = (typeof options.shouldAutoswitch !== 'undefined') ? true : options.shouldAutoswitch;
     }
 
+    isNight(): boolean {
+        let now = DayTime.fromCurrentTime();
+        return this.morning.isAfter(now) || !this.evening.isAfter(now);
+    }
+    
 }
