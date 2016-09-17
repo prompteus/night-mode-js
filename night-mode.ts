@@ -47,14 +47,14 @@ class NightMode {
     evening: DayTime;
     morning: DayTime;
     refreshIntervalInSeconds: number;
-    nightClass: string;
+    cssNightClassName: string;
     autoSwitchTimeoutIntervalID: number;
 
     constructor(options: any = {}) {
         this.evening = options.evening instanceof DayTime ? options.evening : new DayTime(21, 0);
         this.morning = options.morning instanceof DayTime ? options.morning : new DayTime(6, 0);
         this.refreshIntervalInSeconds = (typeof options.refreshIntervalInSeconds === 'number') ? options.refreshIntervalInSeconds : 20;
-        this.nightClass = (typeof options.nightClass === 'string') ? options.nightClass : 'night';
+        this.cssNightClassName = (typeof options.cssNightClassName === 'string') ? options.cssNightClassName : 'night';
         if (options.autoSwitch !== false) {
             this.enableAutoSwitch();
         }
@@ -67,9 +67,9 @@ class NightMode {
 
     checkBodyClass(): void {
         if (this.isNight()) {
-            document.body.classList.add(this.nightClass);
+            document.body.classList.add(this.cssNightClassName);
         } else {
-            document.body.classList.remove(this.nightClass);
+            document.body.classList.remove(this.cssNightClassName);
         }
     }
 
