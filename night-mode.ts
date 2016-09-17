@@ -31,6 +31,11 @@ class DayTime {
         }
     }
 
+    static fromCurrentTime(): DayTime {
+        let now = new Date();
+        return new DayTime(now.getHours(), now.getMinutes());
+    }
+
     isAfter(dayTime: DayTime): boolean {
         return (this.hour > dayTime.hour
         || (this.hour === dayTime.hour && this.minute > dayTime.minute));
