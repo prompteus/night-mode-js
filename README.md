@@ -36,7 +36,7 @@ Or with custom options:
 | cssNightClassName        | 'night'            | Name of the css class that is added to `<body>` element at night                |
 | autoSwitch               | true               | Whether the NightMode object should automatically switch the night css class. |
 
-And you can also disable or enable the nightMode auto-switch if necessary:
+And you can also disable or enable the nightMode auto-switch if necessary (note that disabling auto-switch doesn't remove the night class from the body if it's currently present):
 ```js
 nightMode.disableAutoSwitch();
 nightMode.enableAutoSwitch();
