@@ -33,10 +33,10 @@ Or with custom options:
 | evening                  | new DayTime(21, 0) | The time when the night starts. Seconds aren't supported.                     |
 | morning                  | new DayTime(6, 0)  | The time when the night ends. Seconds aren't supported.                       |
 | refreshIntervalInSeconds | 20                 | How often the NightMode object checks the time.                               |
-| cssNightClassName        | 'night'            | Name of the css class that is added to <body> element at night                |
+| cssNightClassName        | 'night'            | Name of the css class that is added to `<body>` element at night                |
 | autoSwitch               | true               | Whether the NightMode object should automatically switch the night css class. |
 
-And you can also control the nightMode auto-switch:
+And you can also disable or enable the nightMode auto-switch if necessary:
 ```js
 nightMode.disableAutoSwitch();
 nightMode.enableAutoSwitch();
@@ -55,6 +55,12 @@ body.night {
 }
 ...
 ```
+
+##Compatibility
+This script is written entirely in Typescript and compiled into javascript language level ES5. If you need a different language level, feel free to compile the source yourself.
+
+##Dependencies
+No dependencies!
 
 ## License & credits
 
