@@ -3,10 +3,16 @@
 A small javascript tool to automatically add or remove night css class from the `<body>` element. It's lightweight, straightforward and easy to set up. This project was designed with conviction that all software should have a dark theme to reduce eye strain during night-time use.
 
 ## Quickstart
-Download and place night-mode.min.js in your project. Simply include the script in the `<head>`.
+ Simply include the script in the `<head>`.
+```html
+<script src="https://cdn.jsdelivr.net/night-mode-js/1.0.0/night-mode.min.js">
+```
+
+Or download and place night-mode.min.js in your project.
 ```html
 <script src="path/to/night-mode.min.js">
 ```
+
 
 The simplest way to use NightMode (See the table below describing default options):
 ```html
