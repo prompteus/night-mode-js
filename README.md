@@ -1,6 +1,9 @@
 # night-mode-js
 
-A small javascript tool to automatically add or remove night css class from the `<body>` element. It's lightweight, straightforward and easy to set up. This project was designed with conviction that all software should have a dark theme to reduce eye strain during night-time use.
+A small javascript tool to automatically add or remove night css class from the `<body>` element. It's lightweight, straightforward and easy to set up.
+
+## Why?
+This project was designed with conviction that all software should have an optimized dark theme to reduce eye strain during night-time use.
 
 ## Quickstart
  Simply include the script in the `<head>`.
