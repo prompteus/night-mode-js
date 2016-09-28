@@ -8,12 +8,12 @@ This project was designed with conviction that all software should have an optim
 ## Quickstart
  Simply include the script in the `<head>`.
 ```html
-<script src="https://cdn.jsdelivr.net/night-mode-js/1.0.0/night-mode.min.js">
+<script src="https://cdn.jsdelivr.net/night-mode-js/1.0.0/night-mode.min.js"></script>
 ```
 
 Or download and place night-mode.min.js in your project.
 ```html
-<script src="path/to/night-mode.min.js">
+<script src="path/to/night-mode.min.js"></script>
 ```
 
 
@@ -55,12 +55,12 @@ You're almost done! You just need to add some css rules:
 ```css
 body {
 	background-color: white;
-    color: #212121;
+	color: #212121;
 }
 
 body.night {
 	background-color: #181818;
-    color: white;
+	color: white;
 }
 ...
 ```
