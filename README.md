@@ -20,14 +20,14 @@ Or download and place night-mode.min.js in your project.
 The simplest way to use NightMode (See the table below describing default options):
 ```html
 <script>
-	var nightMode = new NightMode();
+    var nightMode = new NightMode();
 </script>
 ```
 
 Or with custom options:
 ```html
 <script>
-	var nightMode = new NightMode({
+    var nightMode = new NightMode({
     	evening: new DayTime(22, 0), // or evening: DayTime.fromString('22:00')
         morning: new DayTime(5, 30), // or morning: DayTime.fromString('5:30')
         refreshIntervalInSeconds: 30
@@ -54,21 +54,21 @@ nightMode.enableAutoSwitch();
 You're almost done! You just need to add some css rules:
 ```css
 body {
-	background-color: white;
-	color: #212121;
+    background-color: white;
+    color: #212121;
 }
 
 body.night {
-	background-color: #181818;
-	color: white;
+    background-color: #181818;
+    color: white;
 }
 ...
 ```
 
-##Compatibility
+## Compatibility
 This script is written entirely in Typescript and compiled into javascript language level ES5. If you need a different language level, feel free to compile the source yourself.
 
-##Dependencies
+## Dependencies
 No dependencies!
 
 ## License & credits
